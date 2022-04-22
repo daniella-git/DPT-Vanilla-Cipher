@@ -1,10 +1,112 @@
+
+
+
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Example</title>
+  <link rel="stylesheet" href="stylesheet.css">
+  <script type ="text/javascript" src ='index.js'></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-$END$
+  <h1>Welcome to DPT Vanilla Cipher encoder/decoder!</h1>
+  <div class="cipher-input">
+  <textarea id="entrybox" rows="10" cols="100" oninput="printCipherText()">Enter text here</textarea>
+</body>
+
+</div>
+
+<div class="container">
+
+    <div class="box">
+      <h2>Ceaser cipher</h2>
+      Encode/decode
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label><br><br>
+      
+      <label for="rotation">Rotation setting</label>
+        <input type="checkbox" id="rotation" name="rotation"
+               checked> <br><br>
+       
+
+
+      <fieldset>
+        <legend>Cipher resulting text area</legend>
+        <p id="caeser"></p>
+      </fieldset>
+    </div>
+
+
+  <div class="box">
+    
+    <h2>Rot13 cipher</h2>
+    Encode/decode
+    <label class="switch">
+      <input type="checkbox" checked>
+      <span class="slider"></span>
+    </label><br><br>
+    <fieldset>
+      <legend>Cipher resulting text area</legend>
+      <p id="rot13">
+      </p>
+    </fieldset>
+  </div>
+  <div class="box">
+    
+    <h2>Vigenere cipher</h2>
+    Encode/decode
+    <label class="switch">
+      <input type="checkbox" checked>
+      <span class="slider"></span>
+    </label><br><br>
+    <label for="keyword">Keyword:</label>
+  <input type="text" id="cipher-settings" name="cipher-settings"><br><br>
+  <fieldset>
+    <legend>Cipher resulting text area</legend>
+    <p id="vigenere">
+    </p>
+  </fieldset>
+  </div>
+
+
+</div>
+  <div class="time-display">
+    <script type="text/javascript"> 
+  function display_c(){
+  var refresh=1000; 
+  mytime=setTimeout('display_ct()',refresh)
+  }
+
+  function display_ct() {
+    var x = new Date()
+    var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
+    x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds();
+    document.getElementById('ct').innerHTML = x1;
+    display_c();
+ }
+    </script>
+
+
+  <body onload=display_ct();>
+    <span id='ct' ></span>
+    </div>
+
+  <div>
+<p id="quote" style="text-align:right">
+
+
+
+
+</p>
+
+  </div>
+
+
+
 </body>
 </html>
