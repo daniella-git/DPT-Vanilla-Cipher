@@ -12,26 +12,29 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-  <h1>Welcome to DPT Vanilla Cipher encoder/decoder!</h1>
-  <div class="cipher-input">
-  <textarea id="entrybox" rows="10" cols="100" oninput="printCipherText()">Enter text here</textarea>
-</body>
 
-</div>
+    <h1>Welcome to DPT Vanilla Cipher encoder/decoder!</h1>
+      <div class="cipher-input">
+        <textarea id="entrybox" rows="10" cols="100" oninput="printCipherText()">Enter text here</textarea>
+
+
+      </div>
+
 
 <div class="container">
 
     <div class="box">
+      
       <h2>Ceaser cipher</h2>
       Encode/decode
       <label class="switch">
-        <input type="checkbox" checked>
+        <input id="checkbox1" type="checkbox" onclick="caeserCheckbox()" checked>
         <span class="slider"></span>
       </label><br><br>
       
       <label for="rotation">Rotation setting</label>
-        <input type="checkbox" id="rotation" name="rotation"
-               checked> <br><br>
+        <input id="rotnum" type="number" name="shift" value="3" min="1" max="26"> 
+        <br><br>
        
 
 
@@ -39,6 +42,10 @@
         <legend>Cipher resulting text area</legend>
         <p id="caeser"></p>
       </fieldset>
+
+  
+
+
     </div>
 
 
@@ -47,7 +54,7 @@
     <h2>Rot13 cipher</h2>
     Encode/decode
     <label class="switch">
-      <input type="checkbox" checked>
+      <input id="checkbox2" type="checkbox" onclick="rot13Checkbox()" checked>
       <span class="slider"></span>
     </label><br><br>
     <fieldset>
@@ -61,7 +68,7 @@
     <h2>Vigenere cipher</h2>
     Encode/decode
     <label class="switch">
-      <input type="checkbox" checked>
+      <input id="checkbox3" type="checkbox" onclick="vigenereCheckbox()" checked>
       <span class="slider"></span>
     </label><br><br>
     <label for="keyword">Keyword:</label>
