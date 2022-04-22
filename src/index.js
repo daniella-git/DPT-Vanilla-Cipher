@@ -2,12 +2,10 @@
 
 function printCipherText() {
   var userInput = document.getElementById("entrybox").value;
-    document.getElementById("caeser").innerHTML = encrypt(userInput);
+    document.getElementById("caeser").innerHTML = decrypt(userInput);
     document.getElementById("rot13").innerHTML = encrypt(userInput);
     document.getElementById("vigenere").innerHTML = encrypt(userInput)
 }
-
-
 
 
 
@@ -16,7 +14,7 @@ function caeserCheckbox() {
     var userInput = document.getElementById("entrybox").value;
     var checkBox = document.getElementById("checkbox1");
     if (checkBox.checked == true) {
-        document.getElementById("caeser").innerHTML = encrypt(userInput)
+        document.getElementById("caeser").innerHTML = decrypt(userInput)
     }
     else { 
         document.getElementById("caeser").innerHTML = userInput;
@@ -94,4 +92,21 @@ const alphabet = [
     }
     return cipherString
 }
+
+
+function decrypt(items) {  
+    const shift = Number(document.getElementById("rotnum").value);
+    let cipherString = "";
+    for (item of items){
+        if (alphabet.includes(item.toUpperCase())){
+
+            const position = alphabet.indexOf(item.toUpperCase());
+            const newPosition = (position - shift)%26;
+            cipherString += alphabet[newPosition]
+        }
+        else cipherString += item
+    }
+    return cipherString
+}
     
+
