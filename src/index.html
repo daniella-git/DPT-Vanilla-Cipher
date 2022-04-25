@@ -16,8 +16,6 @@
     <h1>Welcome to DPT Vanilla Cipher encoder/decoder!</h1>
       <div class="cipher-input">
         <textarea id="entrybox" rows="10" cols="100" oninput="printCipherText()">Enter text here</textarea>
-
-
       </div>
 
 
@@ -30,16 +28,17 @@
       <label class="switch">
         <input id="checkbox1" type="checkbox" onclick="caeserCheckbox()" checked>
         <span class="slider"></span>
-      </label><br><br>
+      </label>
+        <br><br>
       
       <label for="rotation">Rotation setting</label>
         <input id="rotnum" type="number" name="shift" value="3" min="1" max="26" onchange="caeserCheckbox()"> 
-        <br><br>
+          <br><br>
     
-      <fieldset>
-        <legend>Cipher resulting text area</legend>
-        <p id="caeser"></p>
-      </fieldset>
+        <fieldset>
+          <legend>Cipher resulting text area</legend>
+            <p id="caeser"></p>
+        </fieldset>
 
     </div>
 
@@ -67,47 +66,23 @@
     </label><br><br>
     <label for="keyword">Keyword:</label>
   <input type="text" id="cipher-settings" name="cipher-settings"><br><br>
-  <fieldset>
-    <legend>Cipher resulting text area</legend>
-    <p id="vigenere">
-    </p>
-  </fieldset>
+    <fieldset>
+      <legend>Cipher resulting text area</legend>
+        <p id="vigenere">
+        </p>
+    </fieldset>
   </div>
 
 
 </div>
   <div class="time-display">
-    <script type="text/javascript"> 
-  function display_c(){
-  var refresh=1000; 
-  mytime=setTimeout('display_ct()',refresh)
-  }
-
-  function display_ct() {
-    var x = new Date()
-    var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
-    x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds();
-    document.getElementById('ct').innerHTML = x1;
-    display_c();
- }
-    </script>
-
-
-  <body onload=display_ct();>
-    <span id='ct' ></span>
-    </div>
-
-  <div>
-<p id="quote" style="text-align:right">
-
-
-
-
-</p>
-
+     <body onload=display_ct()>
+        <span id='ct' ></span>
   </div>
 
-
+  <div>
+    <p id="quote" style="text-align:right"></p>
+  </div>
 
 </body>
 </html>
