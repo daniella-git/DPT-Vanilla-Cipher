@@ -11,7 +11,7 @@
   <script type ="text/javascript" src ='index.js'></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
-<body onload=display_ct()>
+<body onload=onPageLoad()>
 
     <h1>Welcome to DPT Vanilla Cipher encoder/decoder!</h1>
       <div class="cipher-input">
@@ -19,58 +19,68 @@
       </div>
 
 
-<div class="container">
+<div class="app-container">
 
     <div class="box">
       
       <h2>Ceaser cipher</h2>
-      Encode/decode
-      <label class="switch">
-        <input id="checkbox1" type="checkbox" onclick="caeserCheckbox()" checked>
-        <span class="slider"></span>
-      </label>
-        <br><br>
-      
+
+      <div class="switch-container">
+        Encode/decode
+        <label class="switch">
+          <input id="checkbox1" type="checkbox" onclick="caeserCheckbox()" unchecked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    
+     <div class="rotation-container">
       <label for="rotation">Rotation setting</label>
         <input id="rotnum" type="number" name="shift" value="3" min="1" max="26" onchange="caeserCheckbox()"> 
-          <br><br>
-    
-        <fieldset>
-          <legend>Cipher resulting text area</legend>
-            <p id="caeser"></p>
-        </fieldset>
+     </div>
+      
+     <div class="result-text-container">
+      <p id="caeser"></p>
+     </div>
 
     </div>
 
   <div class="box">
-    
     <h2>Rot13 cipher</h2>
-    Encode/decode
-      <label class="switch">
-        <input id="checkbox2" type="checkbox" onclick="rot13Checkbox()" checked>
-          <span class="slider"></span>
-      </label><br><br>
-    <fieldset>
-      <legend>Cipher resulting text area</legend>
-        <p id="rot13">
-         </p>
-    </fieldset>
+      <div class="switch-container">
+        Encode/decode
+        <label class="switch">
+          <input id="checkbox2" type="checkbox" onclick="rot13Checkbox()" unchecked>
+            <span class="slider"></span>
+        </label>
+      </div>
+    
+      <div class="result-text-container">
+        <p id="rot13"></p>
+      </div>
   </div>
 
   <div class="box">
     <h2>Vigenere cipher</h2>
-    Encode/decode
-    <label class="switch">
-      <input id="checkbox3" type="checkbox" onclick="vigenereCheckbox()" checked>
-        <span class="slider"></span>
-    </label><br><br>
-    <label for="keyword">Keyword:</label>
-      <input type="text" id="keyword" name="keyword"><br><br>
-    <fieldset>
-      <legend>Cipher resulting text area</legend>
+
+      <div class="switch-container">
+      Encode/decode
+      <label class="switch">
+        <input id="checkbox3" type="checkbox" onclick="vigenereCheckbox()" unchecked>
+          <span class="slider"></span>
+      </label>
+      </div>
+
+      <div class="keyword-container">
+        <label for="keyword">Keyword:</label>
+          <input type="text" id="keyword" name="keyword" value="lemon">
+      </div>
+
+      <div class="result-text-container">
         <p id="vigenere"></p>
-    </fieldset>
-  </div>
+      </div>
+         
+ 
+    </div>
 
 
 </div>

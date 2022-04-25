@@ -1,14 +1,12 @@
 
-
 function printCipherText() {
   var userInput = document.getElementById("entrybox").value;
   var rotationNum = Number(document.getElementById("rotnum").value);
   var userKeyword = document.getElementById("keyword").value;
   document.getElementById("caeser").innerHTML = encrypt(userInput, rotationNum);
-  document.getElementById("rot13").innerHTML = encrypt(userInput, rotationNum);
+  document.getElementById("rot13").innerHTML = encrypt(userInput, 13);
   document.getElementById("vigenere").innerHTML = encryptVigenere(userInput, userKeyword)
 }
-
 
 
 function caeserCheckbox() {
@@ -16,21 +14,20 @@ function caeserCheckbox() {
     var userInput = document.getElementById("entrybox").value;
     var checkBox = document.getElementById("checkbox1");
     var rotationNum = Number(document.getElementById("rotnum").value);
-    if (checkBox.checked == true) {
-        document.getElementById("caeser").innerHTML = encrypt(userInput, rotationNum)
+    if ( ! checkBox.checked) {
+        document.getElementById("caeser").innerHTML = encrypt(userInput, rotationNum);
     }
     else { 
         document.getElementById("caeser").innerHTML = decrypt(userInput, rotationNum);
     }
 }
 
-
 function rot13Checkbox() {
     var userInput = document.getElementById("entrybox").value;
     var checkBox = document.getElementById("checkbox2");
     var rotationNum = 13
-    if (checkBox.checked == true) {
-        document.getElementById("rot13").innerHTML = encrypt(userInput, rotationNum)
+    if ( ! checkBox.checked) {
+        document.getElementById("rot13").innerHTML = encrypt(userInput, rotationNum);
     }
     else { 
         document.getElementById("rot13").innerHTML = decrypt(userInput, rotationNum);
@@ -41,8 +38,8 @@ function vigenereCheckbox() {
     var userInput = document.getElementById("entrybox").value;
     var checkBox = document.getElementById("checkbox3");
     var userKeyword = document.getElementById("keyword").value;
-    if (checkBox.checked == true) {
-        document.getElementById("vigenere").innerHTML = encrypt(userInput, userKeyword)
+    if ( ! checkBox.checked) {
+        document.getElementById("vigenere").innerHTML = encryptVigenere(userInput, userKeyword);
     }
     else { 
         document.getElementById("vigenere").innerHTML = decryptVigenere(userInput, userKeyword);
@@ -65,23 +62,26 @@ function printPhilosopherQuotes(){
     document.getElementById("quote").innerHTML = singleQuote;
         
     });
-
 }
 
-printPhilosopherQuotes();
 
 function display_c(){
     var refresh=1000; 
     let mytime = setTimeout('display_ct()',refresh)
-    }
+}
   
-    function display_ct() {
-      var x = new Date()
-      var x1 = x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
-      x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds();
-      document.getElementById('ct').innerHTML = x1;
-      display_c();
-   }
+function display_ct() {
+    var x = new Date()
+    var x1 = x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
+    x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds();
+    document.getElementById('ct').innerHTML = x1;
+    display_c();
+}
+
+function onPageLoad() {
+display_ct();
+printPhilosopherQuotes();
+}
 
 
 

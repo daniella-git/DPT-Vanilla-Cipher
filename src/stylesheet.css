@@ -11,17 +11,21 @@ body {
   }
 
   h2 {
-    border-bottom: 1px solid black;
-  }
 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0;
+    border-bottom:1px solid black;
+    
+  }
 
   .cipher-input {
       display: flex;
-      border-color: black;
+
     justify-content: center;
   }
 
-  .container {
+  .app-container {
     display: flex   
   }
 
@@ -29,12 +33,39 @@ body {
     flex: 33.33%;
 	  height: 600px;
       width: 65;
-	  padding: 10px;
 	  margin: 25px;
 	  background-color: #ffffff;
 	  text-align: center;
     border: 1px solid black;
 }
+
+.switch-container {
+  border-bottom:1px solid black;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 0;
+}
+
+.rotation-container {
+  border-bottom:1px solid black;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 0;
+}
+
+.keyword-container {
+  border-bottom:1px solid black;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 0;
+}
+
+.result-text-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 0;
+}
+
 
 
 .switch {
@@ -60,7 +91,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: rgb(229, 158, 158);
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -72,17 +103,17 @@ body {
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     -webkit-transition: .4s;
     transition: .4s;
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #8e9fd6;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #a0b5c3;
   }
   
   input:checked + .slider:before {
