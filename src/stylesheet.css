@@ -31,7 +31,6 @@ body {
 
   .box {
     flex: 33.33%;
-	  height: 600px;
       width: 65;
 	  margin: 25px;
 	  background-color: #ffffff;
@@ -64,6 +63,7 @@ body {
   padding-top: 15px;
   padding-bottom: 15px;
   margin: 0;
+  width: auto;
 }
 
 
