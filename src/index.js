@@ -3,9 +3,10 @@
 function printCipherText() {
   var userInput = document.getElementById("entrybox").value;
   var rotationNum = Number(document.getElementById("rotnum").value);
+  var userKeyword = document.getElementById("keyword").value;
   document.getElementById("caeser").innerHTML = encrypt(userInput, rotationNum);
   document.getElementById("rot13").innerHTML = encrypt(userInput, rotationNum);
-  document.getElementById("vigenere").innerHTML = encrypt(userInput, rotationNum)
+  document.getElementById("vigenere").innerHTML = encryptVigenere(userInput, userKeyword)
 }
 
 
@@ -39,16 +40,14 @@ function rot13Checkbox() {
 function vigenereCheckbox() {
     var userInput = document.getElementById("entrybox").value;
     var checkBox = document.getElementById("checkbox3");
+    var userKeyword = document.getElementById("keyword").value;
     if (checkBox.checked == true) {
-        document.getElementById("vigenere").innerHTML = encrypt(userInput, 1)
+        document.getElementById("vigenere").innerHTML = encrypt(userInput, userKeyword)
     }
     else { 
-        document.getElementById("vigenere").innerHTML = decrypt(userInput, 1);
+        document.getElementById("vigenere").innerHTML = decryptVigenere(userInput, userKeyword);
     }
 }
-
-
-
 
 const apiUrl = 'https://philosophy-quotes-api.glitch.me/quotes'
 
@@ -124,4 +123,37 @@ function decrypt(textInput, shift) {
     return cipherString
 }
     
+
+
+function encryptVigenere(textInput, keyword) {  
+    let cipherString = "";
+    const n = 26
+    for (let[index, letter] of Object.entries(textInput)){
+        if (alphabet.includes(letter.toUpperCase())){
+            var messageLetterPosition = alphabet.indexOf(letter.toUpperCase());
+            var keyLetterIndex = alphabet.indexOf(keyword[index % keyword.length].toUpperCase());
+            let index1 = (messageLetterPosition + keyLetterIndex) % n
+            cipherString += alphabet[index1]
+        }
+        else cipherString += letter
+    }
+    return cipherString
+}
+
+
+function decryptVigenere(textInput, keyword) {  
+    let cipherString = "";
+    const n = 26
+
+    for (let[index, letter] of Object.entries(textInput)){
+        if (alphabet.includes(letter.toUpperCase())){
+            var messageLetterPosition = alphabet.indexOf(letter.toUpperCase());
+            var keyLetterIndex = alphabet.indexOf(keyword[index % keyword.length].toUpperCase());
+            let newIndex = (messageLetterPosition - keyLetterIndex + n) % n
+            cipherString += alphabet[newIndex]
+        }
+        else cipherString += letter
+    }
+    return cipherString
+}
 
