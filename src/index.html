@@ -11,7 +11,7 @@
   <script type ="text/javascript" src ='index.js'></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
-<body>
+<body onload=display_ct()>
 
     <h1>Welcome to DPT Vanilla Cipher encoder/decoder!</h1>
       <div class="cipher-input">
@@ -46,40 +46,37 @@
     
     <h2>Rot13 cipher</h2>
     Encode/decode
-    <label class="switch">
-      <input id="checkbox2" type="checkbox" onclick="rot13Checkbox()" checked>
-      <span class="slider"></span>
-    </label><br><br>
+      <label class="switch">
+        <input id="checkbox2" type="checkbox" onclick="rot13Checkbox()" checked>
+          <span class="slider"></span>
+      </label><br><br>
     <fieldset>
       <legend>Cipher resulting text area</legend>
-      <p id="rot13">
-      </p>
+        <p id="rot13">
+         </p>
     </fieldset>
   </div>
+
   <div class="box">
-    
     <h2>Vigenere cipher</h2>
     Encode/decode
     <label class="switch">
       <input id="checkbox3" type="checkbox" onclick="vigenereCheckbox()" checked>
-      <span class="slider"></span>
+        <span class="slider"></span>
     </label><br><br>
     <label for="keyword">Keyword:</label>
-  <input type="text" id="cipher-settings" name="cipher-settings"><br><br>
+      <input type="text" id="cipher-settings" name="cipher-settings"><br><br>
     <fieldset>
       <legend>Cipher resulting text area</legend>
-        <p id="vigenere">
-        </p>
+        <p id="vigenere"></p>
     </fieldset>
   </div>
 
 
 </div>
-  <div class="time-display">
-     <body onload=display_ct()>
+  <div class="time-display"> 
         <span id='ct' ></span>
   </div>
-
   <div>
     <p id="quote" style="text-align:right"></p>
   </div>

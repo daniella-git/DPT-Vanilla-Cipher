@@ -2,9 +2,10 @@
 
 function printCipherText() {
   var userInput = document.getElementById("entrybox").value;
-    document.getElementById("caeser").innerHTML = encrypt(userInput);
-    document.getElementById("rot13").innerHTML = encrypt(userInput);
-    document.getElementById("vigenere").innerHTML = encrypt(userInput)
+  var rotationNum = Number(document.getElementById("rotnum").value);
+  document.getElementById("caeser").innerHTML = encrypt(userInput, rotationNum);
+  document.getElementById("rot13").innerHTML = encrypt(userInput, rotationNum);
+  document.getElementById("vigenere").innerHTML = encrypt(userInput, rotationNum)
 }
 
 
@@ -13,11 +14,12 @@ function caeserCheckbox() {
 
     var userInput = document.getElementById("entrybox").value;
     var checkBox = document.getElementById("checkbox1");
+    var rotationNum = Number(document.getElementById("rotnum").value);
     if (checkBox.checked == true) {
-        document.getElementById("caeser").innerHTML = encrypt(userInput)
+        document.getElementById("caeser").innerHTML = encrypt(userInput, rotationNum)
     }
     else { 
-        document.getElementById("caeser").innerHTML = decrypt(userInput);
+        document.getElementById("caeser").innerHTML = decrypt(userInput, rotationNum);
     }
 }
 
@@ -25,11 +27,12 @@ function caeserCheckbox() {
 function rot13Checkbox() {
     var userInput = document.getElementById("entrybox").value;
     var checkBox = document.getElementById("checkbox2");
+    var rotationNum = 13
     if (checkBox.checked == true) {
-        document.getElementById("rot13").innerHTML = encrypt(userInput)
+        document.getElementById("rot13").innerHTML = encrypt(userInput, rotationNum)
     }
     else { 
-        document.getElementById("rot13").innerHTML = decrypt(userInput);
+        document.getElementById("rot13").innerHTML = decrypt(userInput, rotationNum);
     }
 }
 
@@ -37,10 +40,10 @@ function vigenereCheckbox() {
     var userInput = document.getElementById("entrybox").value;
     var checkBox = document.getElementById("checkbox3");
     if (checkBox.checked == true) {
-        document.getElementById("vigenere").innerHTML = encrypt(userInput)
+        document.getElementById("vigenere").innerHTML = encrypt(userInput, 1)
     }
     else { 
-        document.getElementById("vigenere").innerHTML = decrypt(userInput);
+        document.getElementById("vigenere").innerHTML = decrypt(userInput, 1);
     }
 }
 
@@ -92,31 +95,29 @@ const alphabet = [
   ];
 
 
-  function encrypt(items) {  
-    const shift = Number(document.getElementById("rotnum").value);
+  function encrypt(textInput, shift) {  
     let cipherString = "";
-    for (item of items){
-        if (alphabet.includes(item.toUpperCase())){
-            const position = alphabet.indexOf(item.toUpperCase());
+    for (letter of textInput){
+        if (alphabet.includes(letter.toUpperCase())){
+            const position = alphabet.indexOf(letter.toUpperCase());
             const newPosition = (position + shift)%26;
             cipherString += alphabet[newPosition]
         }
-        else cipherString += item
+        else cipherString += letter
     }
     return cipherString
 }
 
 
-function decrypt(textInput) {  
-    const shift = Number(document.getElementById("rotnum").value);
+function decrypt(textInput, shift) {  
     let cipherString = "";
     const n = 26
     for (letter of textInput){
         if (alphabet.includes(letter.toUpperCase())){
             const position = alphabet.indexOf(letter.toUpperCase());
             let newPosition = position - shift
-            const newPosition2 = (newPosition % n + n)% n;
-            cipherString += alphabet[newPosition2]
+            const newPositionWithShift = (newPosition % n + n)% n;
+            cipherString += alphabet[newPositionWithShift]
         }
         else cipherString += letter
     }
