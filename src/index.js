@@ -70,8 +70,13 @@ function refreshTime(){
   
 function displayCurrentDate() {
     var today = new Date()
-    var todayDate = today.getDate().toString().padStart(2, '0') + "/" + (today.getMonth() + 1).toString().padStart(2, '0') + "/" + today.getFullYear(); 
-    displayedTodayDate = todayDate + " - " +  today.getHours()+ ":" +  today.getMinutes() + ":" +  today.getSeconds();
+    var todayDate = today.getDate().toString().padStart(2, '0') + "/" + 
+    (today.getMonth() + 1).toString().padStart(2, '0') + "/" + 
+    today.getFullYear(); 
+    var displayedTodayDate = todayDate + " - " +  
+    today.getHours().toString().padStart(2, '0') + ":" +  
+    today.getMinutes().toString().padStart(2, '0') + ":" +  
+    today.getSeconds().toString().padStart(2, '0');
     document.getElementById('ct').innerHTML = displayedTodayDate;
     refreshTime();
 }
