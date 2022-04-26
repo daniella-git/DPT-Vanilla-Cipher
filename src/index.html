@@ -1,6 +1,3 @@
-
-
-
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -15,18 +12,17 @@
 
     <h1>Welcome to DPT Vanilla Cipher encoder/decoder!</h1>
       <div class="cipher-input">
-        <textarea id="entrybox" rows="10" cols="100" oninput="printCipherText()">Enter text here</textarea>
+        <textarea id="entrybox" rows="10" cols="100" oninput="printCipherText()" placeholder="Enter your text here"></textarea>
       </div>
-
 
 <div class="app-container">
 
     <div class="box">
       
-      <h2>Ceaser cipher</h2>
+      <h2>Caesar cipher</h2>
 
       <div class="switch-container">
-        Encode/decode
+        Encode / decode
         <label class="switch">
           <input id="checkbox1" type="checkbox" onclick="caeserCheckbox()" unchecked>
           <span class="slider"></span>
@@ -45,9 +41,9 @@
     </div>
 
   <div class="box">
-    <h2>Rot13 cipher</h2>
+    <h2>ROT13 cipher</h2>
       <div class="switch-container">
-        Encode/decode
+        Encode / decode
         <label class="switch">
           <input id="checkbox2" type="checkbox" onclick="rot13Checkbox()" unchecked>
             <span class="slider"></span>
@@ -60,10 +56,10 @@
   </div>
 
   <div class="box">
-    <h2>Vigenere cipher</h2>
+    <h2>Vigenère cipher</h2>
 
       <div class="switch-container">
-      Encode/decode
+      Encode / decode
       <label class="switch">
         <input id="checkbox3" type="checkbox" onclick="vigenereCheckbox()" unchecked>
           <span class="slider"></span>
@@ -72,7 +68,7 @@
 
       <div class="keyword-container">
         <label for="keyword">Keyword</label>
-          <input type="text" id="keyword" name="keyword" value="enter a keyword">
+          <input type="text" id="keyword" name="keyword" placeholder="Enter a keyword">
       </div>
 
       <div class="result-text-container">

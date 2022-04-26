@@ -1,4 +1,3 @@
-
 function printCipherText() {
   var userInput = document.getElementById("entrybox").value;
   var rotationNum = Number(document.getElementById("rotnum").value);
@@ -8,13 +7,12 @@ function printCipherText() {
   document.getElementById("vigenere").innerHTML = encryptVigenere(userInput, userKeyword)
 }
 
-
 function caeserCheckbox() {
 
     var userInput = document.getElementById("entrybox").value;
     var checkBox = document.getElementById("checkbox1");
     var rotationNum = Number(document.getElementById("rotnum").value);
-    if ( ! checkBox.checked) {
+    if ( !checkBox.checked) {
         document.getElementById("caeser").innerHTML = encrypt(userInput, rotationNum);
     }
     else { 
@@ -26,7 +24,7 @@ function rot13Checkbox() {
     var userInput = document.getElementById("entrybox").value;
     var checkBox = document.getElementById("checkbox2");
     var rotationNum = 13
-    if ( ! checkBox.checked) {
+    if ( !checkBox.checked) {
         document.getElementById("rot13").innerHTML = encrypt(userInput, rotationNum);
     }
     else { 
@@ -38,7 +36,7 @@ function vigenereCheckbox() {
     var userInput = document.getElementById("entrybox").value;
     var checkBox = document.getElementById("checkbox3");
     var userKeyword = document.getElementById("keyword").value;
-    if ( ! checkBox.checked) {
+    if ( !checkBox.checked) {
         document.getElementById("vigenere").innerHTML = encryptVigenere(userInput, userKeyword);
     }
     else { 
@@ -91,7 +89,6 @@ const alphabet = [
     'Y','Z'
   ];
 
-
   function encrypt(textInput, shift) {  
     let cipherString = "";
     for (letter of textInput){
@@ -104,7 +101,6 @@ const alphabet = [
     }
     return cipherString
 }
-
 
 function decrypt(textInput, shift) {  
     let cipherString = "";
@@ -138,11 +134,9 @@ function encryptVigenere(textInput, keyword) {
     return cipherString
 }
 
-
 function decryptVigenere(textInput, keyword) {  
     let cipherString = "";
     const n = 26
-
     for (let[index, letter] of Object.entries(textInput)){
         if (alphabet.includes(letter.toUpperCase())){
             var messageLetterPosition = alphabet.indexOf(letter.toUpperCase());
@@ -154,4 +148,3 @@ function decryptVigenere(textInput, keyword) {
     }
     return cipherString
 }
-

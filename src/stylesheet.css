@@ -3,7 +3,6 @@ body {
     font-family: 'Arial', sans-serif;
   }
 
-  
   h1 {
     color: rgb(0, 0, 0);
     display: flex;
@@ -11,18 +10,25 @@ body {
   }
 
   h2 {
-
     padding-top: 5px;
     padding-bottom: 5px;
     margin: 0;
     border-bottom:1px solid black;
-    
   }
 
   .cipher-input {
-      display: flex;
-
+    display: flex;
     justify-content: center;
+  }
+
+  textarea::placeholder {
+    font-family: 'Arial', sans-serif;
+    font-size: large;
+  }
+
+  textarea {
+    font-family: 'Arial', sans-serif;
+    font-size: large;
   }
 
   .app-container {
@@ -31,7 +37,7 @@ body {
 
   .box {
     flex: 33.33%;
-      width: 65;
+    width: 65;
 	  margin: 25px;
     min-height: 450px;
 	  background-color: #ffffff;
@@ -77,27 +83,24 @@ input[type=number] {
 }
 
 .result-text-container {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin: 0;
-  width: auto;
-}
-
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 0;
+    width: auto;
+  }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    vertical-align:middle;
-
-  }
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  vertical-align:middle;
+ }
   
   .switch input { 
     opacity: 0;
     width: 0;
     height: 0;
-
   }
   
   .slider {
@@ -137,6 +140,3 @@ input[type=number] {
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
-
-
-
