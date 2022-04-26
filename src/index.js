@@ -58,32 +58,30 @@ function printPhilosopherQuotes(){
     const jsonPromise = getApi(apiUrl);
     jsonPromise.then((elements) => {
         let randomIndex = Math.floor(Math.random() * elements.length)
-    var singleQuote = elements[randomIndex].quote + " " + elements[randomIndex].source;
+    var singleQuote = elements[randomIndex].quote;
+    var singleSource = elements[randomIndex].source;
     document.getElementById("quote").innerHTML = singleQuote;
-        
+    document.getElementById("source").innerHTML = singleSource;
     });
 }
 
-
-function display_c(){
-    var refresh=1000; 
-    let mytime = setTimeout('display_ct()',refresh)
+function refreshTime(){
+    var refresh = 1000; 
+    let mytime = setTimeout('displayCurrentDate()',refresh)
 }
   
-function display_ct() {
-    var x = new Date()
-    var x1 = x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
-    x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds();
-    document.getElementById('ct').innerHTML = x1;
-    display_c();
+function displayCurrentDate() {
+    var today = new Date()
+    var todayDate = today.getDate().toString().padStart(2, '0') + "/" + (today.getMonth() + 1).toString().padStart(2, '0') + "/" + today.getFullYear(); 
+    displayedTodayDate = todayDate + " - " +  today.getHours()+ ":" +  today.getMinutes() + ":" +  today.getSeconds();
+    document.getElementById('ct').innerHTML = displayedTodayDate;
+    refreshTime();
 }
 
 function onPageLoad() {
-display_ct();
+displayCurrentDate();
 printPhilosopherQuotes();
 }
-
-
 
 const alphabet = [
     'A','B','C','D','E','F',
