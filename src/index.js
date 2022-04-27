@@ -122,8 +122,6 @@ function decrypt(textInput, shift) {
     return cipherString
 }
     
-
-
 function encryptVigenere(textInput, keyword) {  
     let cipherString = "";
     const n = 26
