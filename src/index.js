@@ -2,8 +2,8 @@ function printCipherText() {
   var userInput = document.getElementById("entrybox").value;
   var rotationNum = Number(document.getElementById("rotnum").value);
   var userKeyword = document.getElementById("keyword").value;
-  document.getElementById("caeser").innerHTML = encrypt(userInput, rotationNum);
-  document.getElementById("rot13").innerHTML = encrypt(userInput, 13);
+  document.getElementById("caeser").innerHTML = encryptString(userInput, rotationNum);
+  document.getElementById("rot13").innerHTML = encryptString(userInput, 13);
   document.getElementById("vigenere").innerHTML = encryptVigenere(userInput, userKeyword)
 }
 
@@ -13,10 +13,10 @@ function caeserCheckbox() {
     var checkBox = document.getElementById("checkbox1");
     var rotationNum = Number(document.getElementById("rotnum").value);
     if ( !checkBox.checked) {
-        document.getElementById("caeser").innerHTML = encrypt(userInput, rotationNum);
+        document.getElementById("caeser").innerHTML = encryptString(userInput, rotationNum);
     }
     else { 
-        document.getElementById("caeser").innerHTML = decrypt(userInput, rotationNum);
+        document.getElementById("caeser").innerHTML = decryptString(userInput, rotationNum);
     }
 }
 
@@ -25,10 +25,10 @@ function rot13Checkbox() {
     var checkBox = document.getElementById("checkbox2");
     var rotationNum = 13
     if ( !checkBox.checked) {
-        document.getElementById("rot13").innerHTML = encrypt(userInput, rotationNum);
+        document.getElementById("rot13").innerHTML = encryptString(userInput, rotationNum);
     }
     else { 
-        document.getElementById("rot13").innerHTML = decrypt(userInput, rotationNum);
+        document.getElementById("rot13").innerHTML = decryptString(userInput, rotationNum);
     }
 }
 
@@ -85,7 +85,6 @@ function onPageLoad() {
 displayCurrentDate();
 printPhilosopherQuotes();
 }
-
 const alphabet = [
     'A','B','C','D','E','F',
     'G','H','I','J','K','L',
@@ -94,43 +93,31 @@ const alphabet = [
     'Y','Z'
   ];
 
-  function encrypt(textInput, shift) {  
+function encryptString(textInput, shift) {
     let cipherString = "";
-    for (letter of textInput){
-        if (alphabet.includes(letter.toUpperCase())){
-            const position = alphabet.indexOf(letter.toUpperCase());
-            const newPosition = (position + shift)%26;
-            cipherString += alphabet[newPosition]
-        }
-        else cipherString += letter
+    for (let letter of textInput){
+       const cipheredLetter = encrypt(letter, shift)
+       cipherString += cipheredLetter
     }
     return cipherString
 }
 
-function decrypt(textInput, shift) {  
+function decryptString(textInput, shift) {
     let cipherString = "";
-    const n = 26
-    for (letter of textInput){
-        if (alphabet.includes(letter.toUpperCase())){
-            const position = alphabet.indexOf(letter.toUpperCase());
-            let newPosition = position - shift
-            const newPositionWithShift = (newPosition % n + n)% n;
-            cipherString += alphabet[newPositionWithShift]
-        }
-        else cipherString += letter
+    for (let letter of textInput){
+       const cipheredLetter = decrypt(letter, shift)
+       cipherString += cipheredLetter
     }
     return cipherString
 }
-    
+
 function encryptVigenere(textInput, keyword) {  
     let cipherString = "";
-    const n = 26
     for (let[index, letter] of Object.entries(textInput)){
         if (alphabet.includes(letter.toUpperCase())){
-            var messageLetterPosition = alphabet.indexOf(letter.toUpperCase());
-            var keyLetterIndex = alphabet.indexOf(keyword[index % keyword.length].toUpperCase());
-            let index1 = (messageLetterPosition + keyLetterIndex) % n
-            cipherString += alphabet[index1]
+            var keywordShiftNumber = alphabet.indexOf(keyword[index % keyword.length].toUpperCase());
+            var encryptedLetter = encrypt(letter.toUpperCase(), keywordShiftNumber)
+            cipherString += encryptedLetter
         }
         else cipherString += letter
     }
@@ -139,13 +126,11 @@ function encryptVigenere(textInput, keyword) {
 
 function decryptVigenere(textInput, keyword) {  
     let cipherString = "";
-    const n = 26
     for (let[index, letter] of Object.entries(textInput)){
         if (alphabet.includes(letter.toUpperCase())){
-            var messageLetterPosition = alphabet.indexOf(letter.toUpperCase());
-            var keyLetterIndex = alphabet.indexOf(keyword[index % keyword.length].toUpperCase());
-            let newIndex = (messageLetterPosition - keyLetterIndex + n) % n
-            cipherString += alphabet[newIndex]
+            var keywordShiftNumber = alphabet.indexOf(keyword[index % keyword.length].toUpperCase());
+            var decryptedLetter = decrypt(letter.toUpperCase(), keywordShiftNumber)
+            cipherString += decryptedLetter
         }
         else cipherString += letter
     }
