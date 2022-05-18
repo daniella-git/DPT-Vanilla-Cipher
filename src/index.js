@@ -85,13 +85,6 @@ function onPageLoad() {
 displayCurrentDate();
 printPhilosopherQuotes();
 }
-const alphabet = [
-    'A','B','C','D','E','F',
-    'G','H','I','J','K','L',
-    'M','N','O','P','Q','R',
-    'S','T','U','V','W','X',
-    'Y','Z'
-  ];
 
 function encryptString(textInput, shift) {
     let cipherString = "";
@@ -108,6 +101,38 @@ function decryptString(textInput, shift) {
        const cipheredLetter = decrypt(letter, shift)
        cipherString += cipheredLetter
     }
+    return cipherString
+}
+
+const alphabet = [
+    'A','B','C','D','E','F',
+    'G','H','I','J','K','L',
+    'M','N','O','P','Q','R',
+    'S','T','U','V','W','X',
+    'Y','Z'
+  ];
+
+  function encrypt(letter, shift) {  
+    let cipherString = "";
+    if (alphabet.includes(letter.toUpperCase())){
+        const position = alphabet.indexOf(letter.toUpperCase());
+        const newPosition = (position + shift)%26;
+        cipherString += alphabet[newPosition]
+    }
+    else cipherString += letter
+    return cipherString
+}
+
+function decrypt(letter, shift) {  
+    let cipherString = "";
+    const n = 26
+    if (alphabet.includes(letter.toUpperCase())){
+            const position = alphabet.indexOf(letter.toUpperCase());
+            let newPosition = position - shift
+            const newPositionWithShift = (newPosition % n + n)% n;
+            cipherString += alphabet[newPositionWithShift]
+    }
+    else cipherString += letter
     return cipherString
 }
 
